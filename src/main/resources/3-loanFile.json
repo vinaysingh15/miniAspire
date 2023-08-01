@@ -1,0 +1,38 @@
+{
+  "id" : "3",
+  "loanAmount" : 800.0,
+  "tenure" : 5,
+  "status" : "APPROVED",
+  "customerId" : "1",
+  "scheduledRepayments" : [ {
+    "id" : "301",
+    "loanId" : "3",
+    "dueDate" : [ 2023, 8, 9 ],
+    "amount" : 160.0,
+    "status" : "PENDING"
+  }, {
+    "id" : "302",
+    "loanId" : "3",
+    "dueDate" : [ 2023, 8, 16 ],
+    "amount" : 160.0,
+    "status" : "PENDING"
+  }, {
+    "id" : "303",
+    "loanId" : "3",
+    "dueDate" : [ 2023, 8, 23 ],
+    "amount" : 160.0,
+    "status" : "PENDING"
+  }, {
+    "id" : "304",
+    "loanId" : "3",
+    "dueDate" : [ 2023, 8, 30 ],
+    "amount" : 160.0,
+    "status" : "PENDING"
+  }, {
+    "id" : "305",
+    "loanId" : "3",
+    "dueDate" : [ 2023, 9, 6 ],
+    "amount" : 160.0,
+    "status" : "PENDING"
+  } ]
+}
