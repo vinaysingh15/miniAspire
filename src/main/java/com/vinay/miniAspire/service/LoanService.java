@@ -17,18 +17,18 @@ public class LoanService {
     @Autowired
     LoanUtil loanUtil;
 
-    public boolean createLoan(Loan loan, String customerId, String loanId) {
+    public Loan createLoan(Loan loan, String customerId, String loanId) {
         loan.setId(loanId);
         loan.setCustomerId(customerId);
-        boolean saved = false;
         //check if loan already exists
         Optional<Loan> loan1 = loanUtil.findLoanById(loanId);
         if(loan1.isPresent()) {
-            return saved;
+            return null;
         }
-        saved = loanUtil.saveLoanToFile(loan);
+        boolean saved = loanUtil.saveLoanToFile(loan);
+        if(!saved) return null;
         loanUtil.generateScheduledRepayments(loan);
-        return saved;
+        return loan;
     }
 
     public Loan approveLoan(String loanId) {

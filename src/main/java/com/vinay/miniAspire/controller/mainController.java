@@ -20,8 +20,8 @@ public class mainController {
     @PostMapping("customer/{customerId}/loan/{loanId}")
     public ResponseEntity createLoan(@PathVariable("customerId")String customerId ,
                                      @PathVariable("loanId")String loanId, @RequestBody Loan loan) {
-        boolean created = loanService.createLoan(loan, customerId, loanId);
-        if(created)
+        Loan loan1 = loanService.createLoan(loan, customerId, loanId);
+        if(loan1 == null)
             return new ResponseEntity<>(loan, HttpStatus.CREATED);
         else return new ResponseEntity<>("Error while creating loan", HttpStatus.INTERNAL_SERVER_ERROR);
     }
