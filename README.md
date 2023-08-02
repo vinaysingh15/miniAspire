@@ -6,9 +6,9 @@
 #  How to run
 1. Install Java
 2. Install Maven
-3. Update the value of variable LOANS_FOLDER in LoanUtils class to absolute path of a directory.
-4. Build the spring-boot app using the command **mvn clean install**
-5. Run the spring boot app using the command **mvn spring-boot:run**
+3. Build the spring-boot app using the command **mvn clean install**
+4. Run the spring boot app using the command **mvn spring-boot:run -Dspring-boot.run.arguments=--fileAbsolutePath={DirectoryAbsolutePath}**
+5. Pass the file directory absolute path in 4th step where you want to store the local file system.
 
 # Api Spec
 1. Create new loan by customerId & loanId[POST]: **http://baseurl:port/miniAspire/customer/{customerId}/loan/{loanId}**
