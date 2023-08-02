@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.vinay.miniAspire.model.Loan;
 import com.vinay.miniAspire.model.ScheduledRepayment;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 
@@ -19,16 +20,19 @@ import static java.lang.Integer.parseInt;
 
 @Component
 public class LoanUtil {
-    private static final String LOANS_FOLDER = "/home/ubuntu/Downloads/miniAspire/src/main/resources";
+
+    private String LOANS_FOLDER;
     private static final String LOAN_FILE_EXTENSION = "-loanFile.json";
 
     private ObjectMapper objectMapper;
-    public LoanUtil() {
+    public LoanUtil(@Value("${fileAbsolutePath}") String fileFolder) {
+        this.LOANS_FOLDER = fileFolder;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
     }
+
     public boolean saveLoanToFile(Loan loan) {
         File file = new File(getLoanFilePath(loan.getId()));
         try {
